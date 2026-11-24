@@ -1,0 +1,1 @@
+Abre index.html a 375 px. El campo de búsqueda provoca desbordamiento. Sigue la sección 4.8, identifica la regla y corrige css/laboratorio.css. La referencia limpia es ../../final/index.html desde esta carpeta. No copies este fallo al proyecto.

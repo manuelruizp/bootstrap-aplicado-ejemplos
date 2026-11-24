@@ -1,0 +1,11 @@
+--- laboratorio/index.html
++++ solucion/index.html
+@@ -124,7 +124,7 @@
+               <ul class="dropdown-menu" aria-labelledby="acciones-P002">
+                 <li><a class="dropdown-item" href="detalle.html?codigo=P002">Ver Bolígrafo azul</a></li>
+                 <li><button type="button" class="dropdown-item"
+-                  data-bs-toggle="modal" data-bs-target="#confirmar-producto"
++                  data-bs-toggle="modal" data-bs-target="#confirmar"
+                   data-codigo="P002">Eliminar Bolígrafo azul</button></li>
+               </ul>
+             </div>

@@ -1,0 +1,3 @@
+# Diagnóstico de referencia
+El proyecto incluye inicialmente un CSS válido. npm run css falla por un valor ausente en $primary y, con las versiones de esta edición y --no-error-css, elimina el archivo de salida. La opción evita escribir una hoja con el diagnóstico; no conserva una copia del último CSS válido. Identifica archivo y línea en la terminal, restaura #185c4b y ejecuta npm run css. Comprueba que css/bootstrap-personalizado.css vuelve a existir antes de recargar. Una página que ya estaba abierta puede mantener temporalmente el aspecto anterior.
+Después comprueba tres páginas, 375/1280, temas, filtro, modal y formulario. La solución está en solucion/; consulta después del intento.

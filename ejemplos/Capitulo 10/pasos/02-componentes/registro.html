@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="es" data-bs-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1">
+  <title>Registrar producto</title>
+  <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/css/bootstrap.min.css"
+    integrity="sha384-yEPZ7jP9S0QKiUQ0m3jjsO4ProIW7wvR9gXkI7JOGa2XVsw53Yke2bsdkBbjmmiX"
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="app.css">
+</head>
+<body class="inv-app">
+  <a class="visually-hidden-focusable" href="#contenido">Saltar al contenido</a>
+  <nav class="navbar inv-nav navbar-expand-lg bg-body-tertiary border-bottom"
+    aria-label="Principal">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">Inventario</a>
+      <button class="navbar-toggler" type="button"
+        data-bs-toggle="collapse" data-bs-target="#menu-principal"
+        aria-controls="menu-principal" aria-expanded="false"
+        aria-label="Mostrar u ocultar navegación">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div id="menu-principal" class="collapse navbar-collapse">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Productos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="registro.html">Registrar</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <main id="contenido" class="container py-4" tabindex="-1">
+    <h1 class="h2 mb-3 inv-cabecera">Registrar producto</h1>
+    <p id="alcance">Demostración sin almacenamiento. Validar no guarda ni añade productos al listado.</p>
+    <p>Todos los campos de texto y número son obligatorios. Producto activo es opcional.</p>
+    <p id="resultado" role="status" aria-live="polite"></p>
+    <form novalidate class="inv-panel inv-form" id="producto-form" aria-describedby="alcance">
+      <div class="row g-3">
+        <div class="col-12 col-md-4">
+          <label for="codigo" class="form-label">Código</label>
+          <input id="codigo" name="codigo" type="text" class="form-control" required pattern="P[0-9]{3}"
+            aria-describedby="codigo-ayuda codigo-error">
+          <div id="codigo-ayuda" class="form-text">P mayúscula seguida de tres cifras. P001 simula un duplicado.</div>
+          <p id="codigo-error" class="small text-danger-emphasis mt-1 mb-0" hidden></p>
+        </div>
+        <div class="col-12 col-md-8">
+          <label for="nombre" class="form-label">Nombre</label>
+          <input id="nombre" name="nombre" type="text" class="form-control" required maxlength="80"
+            aria-describedby="nombre-ayuda nombre-error">
+          <div id="nombre-ayuda" class="form-text">Hasta 80 caracteres; debe contener algo más que espacios.</div>
+          <p id="nombre-error" class="small text-danger-emphasis mt-1 mb-0" hidden></p>
+        </div>
+        <div class="col-12 col-md-6">
+          <label for="precio" class="form-label">Precio en dólares estadounidenses</label>
+          <div class="input-group">
+            <span class="input-group-text" aria-hidden="true">$</span>
+            <input id="precio" name="precio" type="number" class="form-control" required min="0" step="0.01"
+              aria-describedby="precio-ayuda precio-error">
+          </div>
+          <div id="precio-ayuda" class="form-text">Cero o más, en incrementos de 0.01.</div>
+          <p id="precio-error" class="small text-danger-emphasis mt-1 mb-0" hidden></p>
+        </div>
+        <div class="col-12 col-md-6">
+          <label for="stock" class="form-label">Existencias</label>
+          <input id="stock" name="stock" type="number" class="form-control" required min="0" step="1"
+            aria-describedby="stock-ayuda stock-error">
+          <div id="stock-ayuda" class="form-text">Número entero igual o mayor que cero.</div>
+          <p id="stock-error" class="small text-danger-emphasis mt-1 mb-0" hidden></p>
+        </div>
+        <div class="col-12 form-check ps-5">
+          <input id="activo" name="activo" value="si" type="checkbox" class="form-check-input" checked>
+          <label for="activo" class="form-check-label">Producto activo</label>
+        </div>
+        <div class="col-12 d-flex flex-wrap gap-2">
+          <button type="submit" class="btn btn-inventario">Validar producto</button>
+          <a class="btn btn-outline-secondary" href="index.html">Volver al listado</a>
+        </div>
+      </div>
+    </form>
+  </main>
+  <footer class="container py-4">
+    <p class="small text-body-secondary">Inventario de aprendizaje · Datos de ejemplo</p>
+  </footer>
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-WyOxWvTyr1QaMPfiPJSv76iReVthorl5uWlFtZPyK0IEB0hGzo9y5Bp9mYanr8Bu"
+    crossorigin="anonymous"></script>
+  <script src="registro.js"></script>
+</body>
+</html>

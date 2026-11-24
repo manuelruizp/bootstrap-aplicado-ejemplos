@@ -1,0 +1,337 @@
+--- inicio/app.css
++++ final/app.css
+@@ -0,0 +1,91 @@
++/* 1. Decisiones del proyecto y puente a Bootstrap */
++:root, [data-bs-theme="light"] {
++  --inv-acento: #185c4b;
++  --inv-acento-hover: #104638;
++  --inv-acento-activo: #0d3b2f;
++  --inv-enlace: #185c4b;
++  --inv-fondo: #edf3f1;
++  --inv-superficie: #ffffff;
++  --inv-superficie-suave: #f2f7f5;
++  --inv-texto: #20342d;
++  --inv-secundario: #4e6259;
++  --inv-borde: #71867a;
++  --inv-foco: #735300;
++  --inv-radio: .8rem;
++  --inv-espacio: 1rem;
++  --bs-body-font-family: "Segoe UI", system-ui, sans-serif;
++  --bs-body-color: var(--inv-texto);
++  --bs-body-bg: var(--inv-fondo);
++  --bs-secondary-color: var(--inv-secundario);
++  --bs-tertiary-bg: var(--inv-superficie-suave);
++  --bs-border-color: var(--inv-borde);
++  --bs-link-color: var(--inv-enlace);
++  --bs-link-color-rgb: 24, 92, 75;
++  --bs-link-hover-color: #104638;
++  --bs-link-hover-color-rgb: 16, 70, 56;
++}
++[data-bs-theme="dark"] {
++  --inv-enlace: #9ce4c8;
++  --inv-fondo: #14221d;
++  --inv-superficie: #1d3027;
++  --inv-superficie-suave: #243d31;
++  --inv-texto: #ecf5ef;
++  --inv-secundario: #c0d4c7;
++  --inv-borde: #819c8c;
++  --inv-foco: #ffe29a;
++  --bs-body-color: var(--inv-texto);
++  --bs-body-bg: var(--inv-fondo);
++  --bs-secondary-color: var(--inv-secundario);
++  --bs-tertiary-bg: var(--inv-superficie-suave);
++  --bs-border-color: var(--inv-borde);
++  --bs-link-color: var(--inv-enlace);
++  --bs-link-color-rgb: 156, 228, 200;
++  --bs-link-hover-color: #c2f3df;
++  --bs-link-hover-color-rgb: 194, 243, 223;
++}
++/* 2. Superficies e identidad compartidas */
++.inv-panel {
++  background: var(--inv-superficie);
++  border: 1px solid var(--inv-borde);
++  border-radius: var(--inv-radio);
++  padding: var(--inv-espacio);
++}
++.inv-cabecera { border-left: .3rem solid var(--inv-acento); padding-left: var(--inv-espacio); }
++.inv-cabecera h1, h1.inv-cabecera { font-weight: 700; letter-spacing: -.025em; }
++.inv-nav { --bs-navbar-color: var(--inv-secundario); --bs-navbar-active-color: var(--inv-texto); }
++.inv-nav .navbar-brand { font-weight: 700; letter-spacing: -.02em; }
++.inv-nav .nav-link.active { text-decoration: underline; text-underline-offset: .3em; }
++.inv-tabla { --bs-table-bg: var(--inv-superficie); --bs-table-color: var(--inv-texto);
++  --bs-table-border-color: var(--inv-borde); --bs-table-striped-bg: var(--inv-superficie-suave);
++  --bs-table-striped-color: var(--inv-texto); --bs-table-hover-bg: var(--inv-superficie-suave);
++  --bs-table-hover-color: var(--inv-texto); }
++.inv-tabla thead { border-bottom: 2px solid var(--inv-borde); }
++.inv-tabla caption { color: var(--inv-secundario); }
++.inv-form .form-control { background-color: var(--inv-superficie); border-color: var(--inv-borde); }
++.inv-form .form-control.is-invalid { border-color: var(--bs-form-invalid-border-color); }
++.inv-form .form-text { color: var(--inv-secundario); }
++.inv-app .btn-outline-primary, .inv-app .btn-outline-secondary {
++  --bs-btn-color: var(--inv-texto); --bs-btn-border-color: var(--inv-borde);
++  --bs-btn-hover-color: #fff; --bs-btn-hover-bg: var(--inv-acento-hover);
++  --bs-btn-hover-border-color: var(--inv-acento-hover);
++  --bs-btn-active-color: #fff; --bs-btn-active-bg: var(--inv-acento-activo);
++  --bs-btn-active-border-color: var(--inv-acento-activo);
++  --bs-btn-disabled-color: var(--inv-secundario);
++  --bs-btn-disabled-border-color: var(--inv-borde);
++}
++.inv-app .btn-outline-danger {
++  --bs-btn-color: var(--bs-danger-text-emphasis);
++  --bs-btn-border-color: var(--bs-danger-text-emphasis);
++}
++/* 3. Acción principal; peligro conserva su variante Bootstrap */
++.btn-inventario {
++  --bs-btn-color: #fff; --bs-btn-bg: var(--inv-acento); --bs-btn-border-color: var(--inv-acento);
++  --bs-btn-hover-color: #fff; --bs-btn-hover-bg: var(--inv-acento-hover);
++  --bs-btn-hover-border-color: var(--inv-acento-hover);
++  --bs-btn-active-color: #fff; --bs-btn-active-bg: var(--inv-acento-activo);
++  --bs-btn-active-border-color: var(--inv-acento-activo);
++  --bs-btn-disabled-color: #fff; --bs-btn-disabled-bg: var(--inv-acento);
++  --bs-btn-disabled-border-color: var(--inv-acento);
++  --bs-btn-focus-shadow-rgb: 24, 92, 75;
++}
++.inv-app :focus-visible { outline: 3px solid var(--inv-foco); outline-offset: 3px; }
+--- inicio/detalle.html
++++ final/detalle.html
+@@ -1,5 +1,5 @@
+ <!doctype html>
+-<html lang="es">
++<html lang="es" data-bs-theme="light">
+ <head>
+   <meta charset="utf-8">
+   <meta name="viewport"
+@@ -9,12 +9,14 @@
+     href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/css/bootstrap.min.css"
+     integrity="sha384-yEPZ7jP9S0QKiUQ0m3jjsO4ProIW7wvR9gXkI7JOGa2XVsw53Yke2bsdkBbjmmiX"
+     crossorigin="anonymous">
++  <link rel="stylesheet" href="app.css">
+ </head>
+-<body>
++<body class="inv-app">
+   <a class="visually-hidden-focusable" href="#contenido">Saltar al contenido</a>
+-  <nav class="navbar navbar-expand-lg bg-body-tertiary border-bottom"
++  <nav class="navbar inv-nav navbar-expand-lg bg-body-tertiary border-bottom"
+     aria-label="Principal">
+     <div class="container">
++      <button id="tema" type="button" class="btn btn-outline-secondary btn-sm me-2" aria-pressed="false">Activar modo oscuro</button>
+       <a class="navbar-brand" href="index.html">Inventario</a>
+       <button class="navbar-toggler" type="button"
+         data-bs-toggle="collapse" data-bs-target="#menu-principal"
+@@ -35,7 +37,7 @@
+     </div>
+   </nav>
+   <main id="contenido" class="container py-4" tabindex="-1">
+-    <h1 class="h2 mb-3">Detalle del producto</h1>
++    <h1 class="h2 mb-3 inv-cabecera">Detalle del producto</h1>
+     <nav aria-label="Ruta del producto">
+       <ol class="breadcrumb">
+         <li class="breadcrumb-item"><a href="index.html">Productos</a></li>
+@@ -45,7 +47,7 @@
+     <p id="no-encontrado" role="status" hidden>
+       Producto no encontrado. Comprueba el código de la dirección o vuelve al listado.
+     </p>
+-    <section id="ficha-producto" aria-labelledby="nombre-producto" hidden>
++    <section class="inv-panel" id="ficha-producto" aria-labelledby="nombre-producto" hidden>
+       <h2 id="nombre-producto" class="h4"></h2>
+       <dl class="row">
+         <dt class="col-sm-4">Código</dt><dd id="codigo-producto" class="col-sm-8"></dd>
+@@ -64,5 +66,6 @@
+     integrity="sha384-WyOxWvTyr1QaMPfiPJSv76iReVthorl5uWlFtZPyK0IEB0hGzo9y5Bp9mYanr8Bu"
+     crossorigin="anonymous"></script>
+   <script src="detalle.js"></script>
++  <script src="tema.js"></script>
+ </body>
+ </html>
+--- inicio/index.html
++++ final/index.html
+@@ -1,5 +1,5 @@
+ <!doctype html>
+-<html lang="es">
++<html lang="es" data-bs-theme="light">
+ <head>
+   <meta charset="utf-8">
+   <meta name="viewport"
+@@ -9,12 +9,14 @@
+     href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/css/bootstrap.min.css"
+     integrity="sha384-yEPZ7jP9S0QKiUQ0m3jjsO4ProIW7wvR9gXkI7JOGa2XVsw53Yke2bsdkBbjmmiX"
+     crossorigin="anonymous">
++  <link rel="stylesheet" href="app.css">
+ </head>
+-<body>
++<body class="inv-app">
+   <a class="visually-hidden-focusable" href="#contenido">Saltar al contenido</a>
+-  <nav class="navbar navbar-expand-lg bg-body-tertiary border-bottom"
++  <nav class="navbar inv-nav navbar-expand-lg bg-body-tertiary border-bottom"
+     aria-label="Principal">
+     <div class="container">
++      <button id="tema" type="button" class="btn btn-outline-secondary btn-sm me-2" aria-pressed="false">Activar modo oscuro</button>
+       <a class="navbar-brand" href="index.html">Inventario</a>
+       <button class="navbar-toggler" type="button"
+         data-bs-toggle="collapse" data-bs-target="#menu-principal"
+@@ -35,19 +37,19 @@
+     </div>
+   </nav>
+   <main id="contenido" class="container py-4" tabindex="-1">
+-  <header class="mb-4">
++  <header class="mb-4 inv-cabecera">
+     <div class="row g-3 align-items-center">
+       <div class="col-12 col-md">
+         <h1 class="h2 mb-2">Productos</h1>
+         <p class="lead mb-0">Consulta los productos y sus existencias.</p>
+       </div>
+       <div class="col-12 col-md-auto">
+-        <a class="btn btn-primary" href="#productos">Ver productos</a>
++        <a class="btn btn-inventario" href="#productos">Ver productos</a>
+       </div>
+     </div>
+   </header>
+ 
+-    <section class="border rounded p-3 mb-4" aria-labelledby="titulo-simulador">
++    <section class="inv-panel mb-4" aria-labelledby="titulo-simulador">
+       <h2 id="titulo-simulador" tabindex="-1" class="h5">Laboratorio de estados</h2>
+       <p>Controles didácticos; no realizan solicitudes a un servidor.</p>
+       <div class="d-flex flex-wrap gap-2">
+@@ -70,7 +72,7 @@
+     <div id="resultados" aria-busy="false">
+     <div class="row g-4">
+         <aside class="col-12 col-xl-4" aria-labelledby="titulo-filtros">
+-          <div class="border rounded-3 p-3 p-md-4 p-xl-3 bg-body-tertiary">
++          <div class="inv-panel">
+             <h2 id="titulo-filtros" class="h5 mb-2">Filtros</h2>
+             <p class="small text-body-secondary mb-3">La búsqueda se aplica al escribir. Categoría y Aplicar filtros siguen como muestra.</p>
+             <div id="herramientas" class="d-flex flex-column flex-md-row flex-xl-column flex-wrap
+@@ -102,13 +104,13 @@
+           <p>Resumen del inventario completo; la búsqueda solo cambia las filas visibles.</p>
+           <div class="row g-3 mb-3" aria-label="Resumen del inventario">
+             <div class="col-6">
+-              <div class="border rounded p-3">
++              <div class="inv-panel">
+                 <p id="resumen-productos" class="h4 mb-1">3</p>
+                 <p class="mb-0">Productos</p>
+               </div>
+             </div>
+             <div class="col-6">
+-              <div class="border rounded p-3">
++              <div class="inv-panel">
+                 <p id="resumen-unidades" class="h4 mb-1">117</p>
+                 <p class="mb-0">Unidades</p>
+               </div>
+@@ -159,7 +161,7 @@
+           </div>
+           <div id="tabla-desplazable" class="table-responsive" tabindex="0"
+             role="region" aria-labelledby="titulo-productos" aria-describedby="ayuda-tabla">
+-            <table class="table table-striped table-hover align-middle">
++            <table class="table inv-tabla table-striped table-hover align-middle">
+               <caption>Inventario de ejemplo. Precios en dólares estadounidenses ($).</caption>
+               <thead>
+                 <tr>
+@@ -247,5 +249,6 @@
+   <script src="app.js"></script>
+   <script src="interacciones.js"></script>
+   <script src="estados.js"></script>
++  <script src="tema.js"></script>
+ </body>
+ </html>
+--- inicio/registro.html
++++ final/registro.html
+@@ -1,5 +1,5 @@
+ <!doctype html>
+-<html lang="es">
++<html lang="es" data-bs-theme="light">
+ <head>
+   <meta charset="utf-8">
+   <meta name="viewport"
+@@ -9,12 +9,14 @@
+     href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/css/bootstrap.min.css"
+     integrity="sha384-yEPZ7jP9S0QKiUQ0m3jjsO4ProIW7wvR9gXkI7JOGa2XVsw53Yke2bsdkBbjmmiX"
+     crossorigin="anonymous">
++  <link rel="stylesheet" href="app.css">
+ </head>
+-<body>
++<body class="inv-app">
+   <a class="visually-hidden-focusable" href="#contenido">Saltar al contenido</a>
+-  <nav class="navbar navbar-expand-lg bg-body-tertiary border-bottom"
++  <nav class="navbar inv-nav navbar-expand-lg bg-body-tertiary border-bottom"
+     aria-label="Principal">
+     <div class="container">
++      <button id="tema" type="button" class="btn btn-outline-secondary btn-sm me-2" aria-pressed="false">Activar modo oscuro</button>
+       <a class="navbar-brand" href="index.html">Inventario</a>
+       <button class="navbar-toggler" type="button"
+         data-bs-toggle="collapse" data-bs-target="#menu-principal"
+@@ -35,25 +37,25 @@
+     </div>
+   </nav>
+   <main id="contenido" class="container py-4" tabindex="-1">
+-    <h1 class="h2 mb-3">Registrar producto</h1>
++    <h1 class="h2 mb-3 inv-cabecera">Registrar producto</h1>
+     <p id="alcance">Demostración sin almacenamiento. Validar no guarda ni añade productos al listado.</p>
+     <p>Todos los campos de texto y número son obligatorios. Producto activo es opcional.</p>
+     <p id="resultado" role="status" aria-live="polite"></p>
+-    <form novalidate id="producto-form" aria-describedby="alcance">
++    <form novalidate class="inv-panel inv-form" id="producto-form" aria-describedby="alcance">
+       <div class="row g-3">
+         <div class="col-12 col-md-4">
+           <label for="codigo" class="form-label">Código</label>
+           <input id="codigo" name="codigo" type="text" class="form-control" required pattern="P[0-9]{3}"
+             aria-describedby="codigo-ayuda codigo-error">
+           <div id="codigo-ayuda" class="form-text">P mayúscula seguida de tres cifras. P001 simula un duplicado.</div>
+-          <p id="codigo-error" class="small text-danger mt-1 mb-0" hidden></p>
++          <p id="codigo-error" class="small text-danger-emphasis mt-1 mb-0" hidden></p>
+         </div>
+         <div class="col-12 col-md-8">
+           <label for="nombre" class="form-label">Nombre</label>
+           <input id="nombre" name="nombre" type="text" class="form-control" required maxlength="80"
+             aria-describedby="nombre-ayuda nombre-error">
+           <div id="nombre-ayuda" class="form-text">Hasta 80 caracteres; debe contener algo más que espacios.</div>
+-          <p id="nombre-error" class="small text-danger mt-1 mb-0" hidden></p>
++          <p id="nombre-error" class="small text-danger-emphasis mt-1 mb-0" hidden></p>
+         </div>
+         <div class="col-12 col-md-6">
+           <label for="precio" class="form-label">Precio en dólares estadounidenses</label>
+@@ -63,21 +65,21 @@
+               aria-describedby="precio-ayuda precio-error">
+           </div>
+           <div id="precio-ayuda" class="form-text">Cero o más, en incrementos de 0.01.</div>
+-          <p id="precio-error" class="small text-danger mt-1 mb-0" hidden></p>
++          <p id="precio-error" class="small text-danger-emphasis mt-1 mb-0" hidden></p>
+         </div>
+         <div class="col-12 col-md-6">
+           <label for="stock" class="form-label">Existencias</label>
+           <input id="stock" name="stock" type="number" class="form-control" required min="0" step="1"
+             aria-describedby="stock-ayuda stock-error">
+           <div id="stock-ayuda" class="form-text">Número entero igual o mayor que cero.</div>
+-          <p id="stock-error" class="small text-danger mt-1 mb-0" hidden></p>
++          <p id="stock-error" class="small text-danger-emphasis mt-1 mb-0" hidden></p>
+         </div>
+         <div class="col-12 form-check ps-5">
+           <input id="activo" name="activo" value="si" type="checkbox" class="form-check-input" checked>
+           <label for="activo" class="form-check-label">Producto activo</label>
+         </div>
+         <div class="col-12 d-flex flex-wrap gap-2">
+-          <button type="submit" class="btn btn-primary">Validar producto</button>
++          <button type="submit" class="btn btn-inventario">Validar producto</button>
+           <a class="btn btn-outline-secondary" href="index.html">Volver al listado</a>
+         </div>
+       </div>
+@@ -91,5 +93,6 @@
+     integrity="sha384-WyOxWvTyr1QaMPfiPJSv76iReVthorl5uWlFtZPyK0IEB0hGzo9y5Bp9mYanr8Bu"
+     crossorigin="anonymous"></script>
+   <script src="registro.js"></script>
++  <script src="tema.js"></script>
+ </body>
+ </html>
+--- inicio/tema.js
++++ final/tema.js
+@@ -0,0 +1,11 @@
++const controlTema = document.querySelector('#tema');
++function aplicarTema(tema) {
++  document.documentElement.dataset.bsTheme = tema;
++  const oscuro = tema === 'dark';
++  controlTema.setAttribute('aria-pressed', String(oscuro));
++  controlTema.textContent = oscuro ? 'Modo oscuro activado' : 'Activar modo oscuro';
++}
++controlTema.addEventListener('click', () => {
++  aplicarTema(document.documentElement.dataset.bsTheme === 'dark' ? 'light' : 'dark');
++});
++aplicarTema('light');

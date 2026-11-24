@@ -1,0 +1,18 @@
+# Instalaciones locales y copias de trabajo del lector
+**/node_modules/
+**/trabajo*/
+**/mi-*/
+# Material editorial y archivos del equipo
+.codex-output/
+revision/
+tmp/
+output/
+*.docx
+*.pdf
+*.zip
+*.log
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+# El CSS generado de Sass, vendor y package-lock.json SÍ se publican.

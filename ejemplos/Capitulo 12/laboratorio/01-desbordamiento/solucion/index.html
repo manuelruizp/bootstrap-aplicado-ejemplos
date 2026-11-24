@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="es" data-bs-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1">
+  <title>Productos</title>
+  <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/css/bootstrap.min.css"
+    integrity="sha384-yEPZ7jP9S0QKiUQ0m3jjsO4ProIW7wvR9gXkI7JOGa2XVsw53Yke2bsdkBbjmmiX"
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="app.css">
+</head>
+<body class="inv-app">
+  <div id="estructura-comun"></div>
+  <noscript><p class="container py-3">Navegación básica sin JavaScript:
+    <a href="index.html">Productos</a> · <a href="registro.html">Registrar</a>.
+    La búsqueda, la validación personalizada, los estados y el tema requieren JavaScript.
+  </p></noscript>
+  <main id="contenido" class="container py-4" tabindex="-1">
+  <header class="mb-4 inv-cabecera">
+    <div class="row g-3 align-items-center">
+      <div class="col-12 col-md">
+        <h1 class="h2 mb-2">Productos</h1>
+        <p class="lead mb-0">Consulta los productos y sus existencias.</p>
+      </div>
+      <div class="col-12 col-md-auto">
+        <a class="btn btn-inventario" href="#productos">Ver productos</a>
+      </div>
+    </div>
+  </header>
+
+    <section class="inv-panel mb-4" aria-labelledby="titulo-simulador">
+      <h2 id="titulo-simulador" tabindex="-1" class="h5">Laboratorio de estados</h2>
+      <p>Controles didácticos; no realizan solicitudes a un servidor.</p>
+      <div class="d-flex flex-wrap gap-2">
+        <button type="button" class="btn btn-outline-secondary" data-escenario="datos">Mostrar datos</button>
+        <button type="button" class="btn btn-outline-secondary" data-escenario="carga">Cargar datos</button>
+        <button type="button" class="btn btn-outline-secondary" data-escenario="vacio">Simular vacío</button>
+        <button type="button" class="btn btn-outline-secondary" data-escenario="error">Simular error</button>
+        <button id="probar-toast" type="button" class="btn btn-outline-secondary">Probar notificación</button>
+      </div>
+    </section>
+    <p id="estado-anuncio" class="visually-hidden" role="status" aria-live="polite" aria-atomic="true"></p>
+    <div id="panel-estado" class="mb-3" hidden>
+      <span id="espera" class="spinner-border spinner-border-sm me-2" aria-hidden="true" hidden></span>
+      <p id="estado-texto" class="d-inline"></p>
+      <div id="acciones-estado" class="mt-2">
+        <button id="reintentar" type="button" class="btn btn-outline-danger" hidden>Reintentar</button>
+        <a id="registrar-primero" class="btn btn-outline-primary" href="registro.html" hidden>Registrar el primero</a>
+      </div>
+    </div>
+    <div id="resultados" aria-busy="false">
+    <div class="row g-4">
+        <aside class="col-12 col-xl-4" aria-labelledby="titulo-filtros">
+          <div class="inv-panel">
+            <h2 id="titulo-filtros" class="h5 mb-2">Filtros</h2>
+            <p class="small text-body-secondary mb-3">La búsqueda se aplica al escribir. Categoría y Aplicar filtros siguen como muestra.</p>
+            <div id="herramientas" class="d-flex flex-column flex-md-row flex-xl-column flex-wrap
+              align-items-stretch align-items-md-end align-items-xl-stretch gap-3">
+              <div class="flex-grow-1">
+                <label for="buscar" class="form-label">Buscar por nombre o código</label>
+                <input id="buscar" type="search" class="form-control"
+                  placeholder="Nombre o código">
+              </div>
+              <div class="flex-grow-1">
+                <label for="categoria" class="form-label">Categoría</label>
+                <select id="categoria" class="form-select">
+                  <option>Todas</option>
+                  <option>Papelería</option>
+                </select>
+              </div>
+              <button type="button" class="btn btn-secondary align-self-stretch
+                  align-self-md-end align-self-xl-start" disabled>
+                Aplicar filtros
+              </button>
+            </div>
+          </div>
+        </aside>
+        <section id="productos" class="col-12 col-xl-8"
+          aria-labelledby="titulo-productos">
+          <h2 tabindex="-1" id="titulo-productos" class="h4 mb-2">
+            Productos disponibles
+          </h2>
+          <p>Resumen del inventario completo; la búsqueda solo cambia las filas visibles.</p>
+          <div class="row g-3 mb-3" aria-label="Resumen del inventario">
+            <div class="col-6">
+              <div class="inv-panel">
+                <p id="resumen-productos" class="h4 mb-1">3</p>
+                <p class="mb-0">Productos</p>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="inv-panel">
+                <p id="resumen-unidades" class="h4 mb-1">117</p>
+                <p class="mb-0">Unidades</p>
+              </div>
+            </div>
+          </div>
+          <p id="ayuda-tabla" class="small text-body-secondary">
+            En pantallas pequeñas, desplaza la tabla horizontalmente para consultar todas las columnas.
+          </p>
+          <p id="conteo" role="status" aria-live="polite"></p>
+          <p id="sin-coincidencias" hidden>Cambia o borra la búsqueda para volver a ver productos.</p>
+          <h3 class="h5">Acciones por producto visible</h3>
+          <p class="small">La eliminación solo afecta esta página; recargar restaura los datos.</p>
+          <p id="operacion" role="status" aria-live="polite"></p>
+          <div id="acciones-productos" class="d-flex flex-wrap gap-2 mb-3">
+            <div class="dropdown" data-acciones="P001">
+              <button id="acciones-P001" type="button"
+                class="btn btn-outline-secondary dropdown-toggle"
+                data-bs-toggle="dropdown" aria-expanded="false">Acciones P001</button>
+              <ul class="dropdown-menu" aria-labelledby="acciones-P001">
+                <li><a class="dropdown-item" href="detalle.html?codigo=P001">Ver Cuaderno universitario</a></li>
+                <li><button type="button" class="dropdown-item"
+                  data-bs-toggle="modal" data-bs-target="#confirmar"
+                  data-codigo="P001">Eliminar Cuaderno universitario</button></li>
+              </ul>
+            </div>
+            <div class="dropdown" data-acciones="P002">
+              <button id="acciones-P002" type="button"
+                class="btn btn-outline-secondary dropdown-toggle"
+                data-bs-toggle="dropdown" aria-expanded="false">Acciones P002</button>
+              <ul class="dropdown-menu" aria-labelledby="acciones-P002">
+                <li><a class="dropdown-item" href="detalle.html?codigo=P002">Ver Bolígrafo azul</a></li>
+                <li><button type="button" class="dropdown-item"
+                  data-bs-toggle="modal" data-bs-target="#confirmar"
+                  data-codigo="P002">Eliminar Bolígrafo azul</button></li>
+              </ul>
+            </div>
+            <div class="dropdown" data-acciones="P003">
+              <button id="acciones-P003" type="button"
+                class="btn btn-outline-secondary dropdown-toggle"
+                data-bs-toggle="dropdown" aria-expanded="false">Acciones P003</button>
+              <ul class="dropdown-menu" aria-labelledby="acciones-P003">
+                <li><a class="dropdown-item" href="detalle.html?codigo=P003">Ver Carpeta tamaño carta</a></li>
+                <li><button type="button" class="dropdown-item"
+                  data-bs-toggle="modal" data-bs-target="#confirmar"
+                  data-codigo="P003">Eliminar Carpeta tamaño carta</button></li>
+              </ul>
+            </div>
+          </div>
+          <div id="tabla-desplazable" class="table-responsive" tabindex="0"
+            role="region" aria-labelledby="titulo-productos" aria-describedby="ayuda-tabla">
+            <table class="table inv-tabla table-striped table-hover align-middle">
+              <caption>Inventario de ejemplo. Precios en dólares estadounidenses ($).</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Código</th>
+                  <th scope="col">Producto</th>
+                  <th scope="col" class="text-end text-nowrap">Precio $</th>
+                  <th scope="col" class="text-end text-nowrap">Unidades</th>
+                  <th scope="col">Estado</th>
+                  <th scope="col">Acciones</th>
+                </tr>
+              </thead>
+              <tbody id="filas-productos">
+                <tr data-unidades="25" data-codigo="P001" data-nombre="Cuaderno universitario">
+                  <th scope="row">P001</th>
+                  <td>Cuaderno universitario</td>
+                  <td class="text-end text-nowrap">150.00</td>
+                  <td class="text-end">25</td>
+                  <td>Disponible</td>
+                  <td><a class="btn btn-sm btn-outline-primary position-relative text-nowrap"
+                      href="detalle.html?codigo=P001">
+                      Ver <span class="visually-hidden">Cuaderno universitario</span>
+                    </a></td>
+                </tr>
+                <tr data-unidades="80" data-codigo="P002" data-nombre="Bolígrafo azul">
+                  <th scope="row">P002</th>
+                  <td>Bolígrafo azul</td>
+                  <td class="text-end text-nowrap">25.00</td>
+                  <td class="text-end">80</td>
+                  <td>Disponible</td>
+                  <td><a class="btn btn-sm btn-outline-primary position-relative text-nowrap"
+                      href="detalle.html?codigo=P002">
+                      Ver <span class="visually-hidden">Bolígrafo azul</span>
+                    </a></td>
+                </tr>
+                <tr data-unidades="12" data-codigo="P003" data-nombre="Carpeta tamaño carta">
+                  <th scope="row">P003</th>
+                  <td>Carpeta tamaño carta</td>
+                  <td class="text-end text-nowrap">45.00</td>
+                  <td class="text-end">12</td>
+                  <td><span class="badge text-bg-warning">Existencias bajas</span></td>
+                  <td><a class="btn btn-sm btn-outline-primary position-relative text-nowrap"
+                      href="detalle.html?codigo=P003">
+                      Ver <span class="visually-hidden">Carpeta tamaño carta</span>
+                    </a></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+    </div>
+    </div>
+  </main>
+  <div class="modal fade" id="confirmar" tabindex="-1"
+    aria-labelledby="titulo-confirmar" aria-describedby="detalle-confirmar" aria-hidden="true">
+    <div class="modal-dialog"><div class="modal-content">
+      <div class="modal-header">
+        <h2 id="titulo-confirmar" class="modal-title fs-5">Eliminar de la demostración</h2>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body">
+        <p id="detalle-confirmar"></p>
+        <p>El cambio es temporal. Recargar restaura los productos; no se elimina nada en un servidor.</p>
+      </div>
+      <div class="modal-footer">
+        <button id="cancelar" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button id="eliminar" type="button" class="btn btn-danger">Eliminar de la página</button>
+      </div>
+    </div></div>
+  </div>
+  <div class="toast-container position-fixed bottom-0 end-0 p-3">
+    <div id="notificacion" class="toast" role="status" aria-live="polite" aria-atomic="true">
+      <div class="toast-header"><strong class="me-auto">Demostración</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Cerrar notificación"></button>
+      </div>
+      <div class="toast-body">Notificación de ejemplo. No se ha guardado ninguna operación.</div>
+    </div>
+  </div>
+  <footer class="container py-4">
+    <p class="small text-body-secondary">Inventario de aprendizaje · Datos de ejemplo</p>
+  </footer>
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-WyOxWvTyr1QaMPfiPJSv76iReVthorl5uWlFtZPyK0IEB0hGzo9y5Bp9mYanr8Bu"
+    crossorigin="anonymous"></script>
+  <script src="layout.js"></script>
+  <script src="app.js"></script>
+  <script src="interacciones.js"></script>
+  <script src="estados.js"></script>
+  <script src="tema.js"></script>
+</body>
+</html>

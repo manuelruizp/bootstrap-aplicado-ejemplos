@@ -1,0 +1,57 @@
+--- inicio/index.html
++++ final/index.html
+@@ -25,23 +25,23 @@
+   <main class="container pb-4">
+     <div class="row g-4">
+         <aside class="col-12 col-lg-4" aria-labelledby="titulo-filtros">
+-          <div class="border rounded p-3">
+-            <h2 id="titulo-filtros" class="h5">Filtros</h2>
+-            <p class="small">Controles de muestra sin filtrado activo.</p>
+-            <form onsubmit="return false">
+-              <div class="mb-3">
++          <div class="border rounded-3 p-3 bg-body-tertiary">
++            <h2 id="titulo-filtros" class="h5 mb-2">Filtros</h2>
++            <p class="small text-body-secondary mb-3">Controles de muestra sin filtrado activo.</p>
++            <form onsubmit="return false" class="d-flex flex-column gap-3">
++              <div>
+                 <label for="buscar" class="form-label">Producto</label>
+                 <input id="buscar" type="search" class="form-control"
+                   placeholder="Nombre o código">
+               </div>
+-              <div class="mb-3">
++              <div>
+                 <label for="categoria" class="form-label">Categoría</label>
+                 <select id="categoria" class="form-select">
+                   <option>Todas</option>
+                   <option>Papelería</option>
+                 </select>
+               </div>
+-              <button type="button" class="btn btn-secondary" disabled>
++              <button type="button" class="btn btn-secondary align-self-start" disabled>
+                 Aplicar filtros
+               </button>
+             </form>
+@@ -68,17 +68,17 @@
+             </div>
+           </div>
+           <ul class="list-group">
+-            <li class="list-group-item py-3">
++            <li class="list-group-item py-2">
+               <strong>Cuaderno universitario</strong>
+-              <p class="mb-0">Código: P001. Existencias: 25 unidades.</p>
++              <p class="small text-body-secondary mb-0">Código: P001. Existencias: 25 unidades.</p>
+             </li>
+-            <li class="list-group-item py-3">
++            <li class="list-group-item py-2">
+               <strong>Bolígrafo azul</strong>
+-              <p class="mb-0">Código: P002. Existencias: 80 unidades.</p>
++              <p class="small text-body-secondary mb-0">Código: P002. Existencias: 80 unidades.</p>
+             </li>
+-            <li class="list-group-item py-3">
++            <li class="list-group-item py-2">
+               <strong>Carpeta tamaño carta</strong>
+-              <p class="mb-0">Código: P003. Existencias: 12 unidades.</p>
++              <p class="small text-body-secondary mb-0">Código: P003. Existencias: 12 unidades.</p>
+             </li>
+           </ul>
+         </section>

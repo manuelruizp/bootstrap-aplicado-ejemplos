@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1">
+  <title>Inventario del almacén</title>
+  <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/css/bootstrap.min.css"
+    integrity="sha384-yEPZ7jP9S0QKiUQ0m3jjsO4ProIW7wvR9gXkI7JOGa2XVsw53Yke2bsdkBbjmmiX"
+    crossorigin="anonymous">
+</head>
+<body>
+  <header class="container py-4">
+    <div class="row g-3 align-items-center">
+      <div class="col-12 col-md">
+        <h1 class="h2 mb-2">Inventario del almacén</h1>
+        <p class="lead mb-0">Consulta los productos y sus existencias.</p>
+      </div>
+      <div class="col-12 col-md-auto">
+        <a class="btn btn-primary" href="#productos">Consultar existencias</a>
+      </div>
+    </div>
+  </header>
+  <main class="container pb-4">
+    <div class="row g-4">
+        <aside class="col-12 col-lg-4" aria-labelledby="titulo-filtros">
+          <div class="border rounded p-3">
+            <h2 id="titulo-filtros" class="h5">Filtros</h2>
+            <p class="small">Controles de muestra sin filtrado activo.</p>
+            <form onsubmit="return false">
+              <div class="mb-3">
+                <label for="buscar" class="form-label">Producto</label>
+                <input id="buscar" type="search" class="form-control"
+                  placeholder="Nombre o código">
+              </div>
+              <div class="mb-3">
+                <label for="categoria" class="form-label">Categoría del producto almacenado</label>
+                <select id="categoria" class="form-select">
+                  <option>Todas</option>
+                  <option>Papelería</option>
+                </select>
+              </div>
+              <button type="button" class="btn btn-secondary" disabled>
+                Aplicar filtros
+              </button>
+            </form>
+          </div>
+        </aside>
+        <section id="productos" class="col-12 col-lg-8"
+          aria-labelledby="titulo-productos">
+          <h2 id="titulo-productos" class="h4 mb-2">
+            Productos disponibles
+          </h2>
+          <p>Tres artículos de papelería para consultar.</p>
+          <div class="row g-3 mb-3" aria-label="Resumen del inventario">
+            <div class="col-12 col-md-4">
+              <div class="border rounded p-3">
+                <p class="h4 mb-1">3</p>
+                <p class="mb-0">Productos</p>
+              </div>
+            </div>
+            <div class="col-12 col-md-4">
+              <div class="border rounded p-3">
+                <p class="h4 mb-1">117</p>
+                <p class="mb-0">Unidades</p>
+              </div>
+            </div>
+            <div class="col-12 col-md-4">
+              <div class="border rounded p-3">
+                <p class="h4 mb-1">1</p>
+                <p class="mb-0">Categorías</p>
+              </div>
+            </div>
+          </div>
+          <ul class="list-group">
+            <li class="list-group-item py-3">
+              <strong>Cuaderno universitario</strong>
+              <p class="mb-0">Código: P001. Existencias: 25 unidades.</p>
+            </li>
+            <li class="list-group-item py-3">
+              <strong>Bolígrafo azul</strong>
+              <p class="mb-0">Código: P002. Existencias: 80 unidades.</p>
+            </li>
+            <li class="list-group-item py-3">
+              <strong>Carpeta tamaño carta</strong>
+              <p class="mb-0">Código: P003. Existencias: 12 unidades.</p>
+            </li>
+          </ul>
+        </section>
+    </div>
+  </main>
+  <footer class="container pb-4">
+    <p>Datos de ejemplo para aprender Bootstrap.</p>
+  </footer>
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-WyOxWvTyr1QaMPfiPJSv76iReVthorl5uWlFtZPyK0IEB0hGzo9y5Bp9mYanr8Bu"
+    crossorigin="anonymous"></script>
+</body>
+</html>

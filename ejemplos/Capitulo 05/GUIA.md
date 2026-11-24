@@ -1,0 +1,42 @@
+# Capítulo 5 Navegación y estructura del panel
+
+Los materiales de este capítulo forman parte del repositorio de ejemplos de Bootstrap aplicado. Después de descargar o clonar el repositorio, esta carpeta se encuentra en ejemplos/Capitulo 05/. Las rutas abreviadas de esta guía parten de aquí. Consulta ../LEEME.txt para las instrucciones generales.
+
+Colección oficial: ejemplos/Capitulo 05. Bootstrap por CDN requiere conexión.
+
+1. Copia inicio como trabajo. Su index coincide con el final del capítulo 4.
+2. Reorganiza el encabezado dentro de main y crea registro.html y detalle.html desde trabajo/index.html. En las nuevas páginas reemplaza el main completo, incluidas apertura y cierre, por los listados 5.1 y 5.2, respectivamente; conserva un solo main por documento. Actualiza el pie de las tres páginas según la indicación siguiente. pasos/01-estructura contiene los tres destinos y enlaces simples.
+3. Añade la navbar adaptable a las tres páginas. Compara con pasos/02-menu.
+4. Marca página actual. Compara pasos/03-pagina-actual.
+5. Añade las migas y el enlace de P001 al detalle. Compara pasos/04-ruta.
+6. Añade salto al contenido y prueba teclado. Compara pasos/05-acceso y final.
+
+
+## Pie compartido del paso 1
+En index.html, registro.html y detalle.html modifica el footer existente:
+- Apertura: `<footer class="container py-4">`.
+- Párrafo: `class="small text-body-secondary"`.
+- Texto: Inventario de aprendizaje · Datos de ejemplo.
+Conserva los cierres de p y footer; no añadas otro pie. Antes de comparar con pasos/01-estructura, comprueba un solo main por documento y el mismo pie en las tres pantallas.
+
+Cada paso contiene tres archivos completos; consulta después de intentar el cambio. El listado conserva filtros adaptables, resumen de 3 productos y 117 unidades, artículos y pie. El encabezado se mueve dentro de main para que el salto incluya el título. Los filtros siguen siendo de muestra.
+
+detalle.html muestra únicamente P001 escrito en HTML. Solo ese producto tiene enlace. Registro prepara un destino real sin formulario ni almacenamiento; el formulario llegará en el capítulo 7.
+
+Para la práctica copia practica/inicio como mi-practica. Sigue los requisitos del libro, usa practica/PISTAS.md si necesitas ayuda y consulta practica/solucion tras el intento. practica/diagnostico contiene un destino de menú incorrecto. Registra rutas y pruebas en practica/registro-rutas.md.
+
+Prueba 375, 991, 992 y 1200 px, Tab, Enter y Espacio, estado actual y regresos al listado. El final coincide con el inicio del capítulo 6.
+
+ESTRUCTURA DE REFERENCIA
+Las carpetas Capitulo NN, inicio, final, pasos y practica organizan los materiales del repositorio. Dentro de la copia trabajo, el recorrido principal mantiene las páginas HTML y los recursos propios al mismo nivel. El capítulo 1 comienza solo con index.html; en el 5 se añaden registro.html y detalle.html, y los scripts y app.css se crean cuando el texto los introduce. vendor se utiliza únicamente si preparas Bootstrap local. La alternativa con paginas, css, js e img es opcional para tu aplicación. Si reorganizas archivos, revisa enlaces y referencias de CSS, JavaScript e imágenes, y comprueba las cargas tras recargar.
+
+MÉTODO DE TRABAJO
+1. Abrir: prepara la copia indicada en esta guía y localiza el archivo antes de editar.
+2. Editar: realiza los cambios del texto en esa copia; conserva lo que el fragmento no sustituye.
+3. Comprobar: reproduce las verificaciones y los criterios de aceptación antes de avanzar.
+4. Comparar: consulta pasos cuando se indique y final después del intento. Los archivos completos son referencias.
+La Práctica de cierre se realiza aparte: Pistas orienta; Solución de referencia permite comparar después; Criterios de aceptación determina qué debe funcionar. Su solución no reemplaza final.
+
+
+ENVÍO DEL FORMULARIO DE MUESTRA
+Mientras el filtro esté dentro de form, conserva onsubmit="return false". Es una cancelación puntual del envío con JavaScript: no conecta los filtros. Escribe P001, selecciona Papelería y pulsa Enter en la búsqueda. Deben conservarse ambos valores y los tres productos; la página no debe recargarse ni cambiar su dirección. Aplicar filtros permanece deshabilitado. Tab sigue recorriendo acceso, búsqueda y categoría.

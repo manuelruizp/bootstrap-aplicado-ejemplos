@@ -1,0 +1,11 @@
+--- laboratorio/registro.html
++++ solucion/registro.html
+@@ -32,7 +32,7 @@
+           <p id="codigo-error" class="small text-danger-emphasis mt-1 mb-0" hidden></p>
+         </div>
+         <div class="col-12 col-md-8">
+-          <label for="nombre-producto" class="form-label">Nombre</label>
++          <label for="nombre" class="form-label">Nombre</label>
+           <input id="nombre" name="nombre" type="text" class="form-control" required maxlength="80"
+             aria-describedby="nombre-ayuda nombre-error">
+           <div id="nombre-ayuda" class="form-text">Hasta 80 caracteres; debe contener algo más que espacios.</div>

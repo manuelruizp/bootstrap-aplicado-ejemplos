@@ -1,0 +1,4 @@
+LABORATORIO SASS OPCIONAL
+Trabaja en una copia; conserva el original. Lee el síntoma sin consultar primero la solución.
+El laboratorio incluye un CSS válido inicial, pero la fuente tiene un error. Al ejecutar npm run css con las versiones de esta edición, la compilación falla y elimina el CSS de salida. Una página ya abierta puede conservar temporalmente su aspecto; recargar no vuelve a generar la hoja. Identifica la causa, corrige la fuente y recompila para recuperarla.
+Registra hipótesis, inspección, causa, corrección y regresión. Usa npm ci desde tu copia para los casos de compilación.

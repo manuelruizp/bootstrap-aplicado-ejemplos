@@ -1,0 +1,91 @@
+/* 1. Decisiones del proyecto y puente a Bootstrap */
+:root, [data-bs-theme="light"] {
+  --inv-acento: #185c4b;
+  --inv-acento-hover: #104638;
+  --inv-acento-activo: #0d3b2f;
+  --inv-enlace: #185c4b;
+  --inv-fondo: #edf3f1;
+  --inv-superficie: #ffffff;
+  --inv-superficie-suave: #f2f7f5;
+  --inv-texto: #20342d;
+  --inv-secundario: #4e6259;
+  --inv-borde: #71867a;
+  --inv-foco: #735300;
+  --inv-radio: .8rem;
+  --inv-espacio: 1rem;
+  --bs-body-font-family: "Segoe UI", system-ui, sans-serif;
+  --bs-body-color: var(--inv-texto);
+  --bs-body-bg: var(--inv-fondo);
+  --bs-secondary-color: var(--inv-secundario);
+  --bs-tertiary-bg: var(--inv-superficie-suave);
+  --bs-border-color: var(--inv-borde);
+  --bs-link-color: var(--inv-enlace);
+  --bs-link-color-rgb: 24, 92, 75;
+  --bs-link-hover-color: #104638;
+  --bs-link-hover-color-rgb: 16, 70, 56;
+}
+[data-bs-theme="dark"] {
+  --inv-enlace: #9ce4c8;
+  --inv-fondo: #14221d;
+  --inv-superficie: #1d3027;
+  --inv-superficie-suave: #243d31;
+  --inv-texto: #ecf5ef;
+  --inv-secundario: #c0d4c7;
+  --inv-borde: #819c8c;
+  --inv-foco: #ffe29a;
+  --bs-body-color: var(--inv-texto);
+  --bs-body-bg: var(--inv-fondo);
+  --bs-secondary-color: var(--inv-secundario);
+  --bs-tertiary-bg: var(--inv-superficie-suave);
+  --bs-border-color: var(--inv-borde);
+  --bs-link-color: var(--inv-enlace);
+  --bs-link-color-rgb: 156, 228, 200;
+  --bs-link-hover-color: #c2f3df;
+  --bs-link-hover-color-rgb: 194, 243, 223;
+}
+/* 2. Superficies e identidad compartidas */
+.inv-panel {
+  background: var(--inv-superficie);
+  border: 1px solid var(--inv-borde);
+  border-radius: var(--inv-radio);
+  padding: var(--inv-espacio);
+}
+.inv-cabecera { border-left: .3rem solid var(--inv-acento); padding-left: var(--inv-espacio); }
+.inv-cabecera h1, h1.inv-cabecera { font-weight: 700; letter-spacing: -.025em; }
+.inv-nav { --bs-navbar-color: var(--inv-secundario); --bs-navbar-active-color: var(--inv-texto); }
+.inv-nav .navbar-brand { font-weight: 700; letter-spacing: -.02em; }
+.inv-nav .nav-link.active { text-decoration: underline; text-underline-offset: .3em; }
+.inv-tabla { --bs-table-bg: var(--inv-superficie); --bs-table-color: var(--inv-texto);
+  --bs-table-border-color: var(--inv-borde); --bs-table-striped-bg: var(--inv-superficie-suave);
+  --bs-table-striped-color: var(--inv-texto); --bs-table-hover-bg: var(--inv-superficie-suave);
+  --bs-table-hover-color: var(--inv-texto); }
+.inv-tabla thead { border-bottom: 2px solid var(--inv-borde); }
+.inv-tabla caption { color: var(--inv-secundario); }
+.inv-form .form-control { background-color: var(--inv-superficie); border-color: var(--inv-borde); }
+.inv-form .form-control.is-invalid { border-color: var(--bs-form-invalid-border-color); }
+.inv-form .form-text { color: var(--inv-secundario); }
+.inv-app .btn-outline-primary, .inv-app .btn-outline-secondary {
+  --bs-btn-color: var(--inv-texto); --bs-btn-border-color: var(--inv-borde);
+  --bs-btn-hover-color: #fff; --bs-btn-hover-bg: var(--inv-acento-hover);
+  --bs-btn-hover-border-color: var(--inv-acento-hover);
+  --bs-btn-active-color: #fff; --bs-btn-active-bg: var(--inv-acento-activo);
+  --bs-btn-active-border-color: var(--inv-acento-activo);
+  --bs-btn-disabled-color: var(--inv-secundario);
+  --bs-btn-disabled-border-color: var(--inv-borde);
+}
+.inv-app .btn-outline-danger {
+  --bs-btn-color: var(--bs-danger-text-emphasis);
+  --bs-btn-border-color: var(--bs-danger-text-emphasis);
+}
+/* 3. Acción principal; peligro conserva su variante Bootstrap */
+.btn-inventario {
+  --bs-btn-color: #fff; --bs-btn-bg: var(--inv-acento); --bs-btn-border-color: var(--inv-acento);
+  --bs-btn-hover-color: #fff; --bs-btn-hover-bg: var(--inv-acento-hover);
+  --bs-btn-hover-border-color: var(--inv-acento-hover);
+  --bs-btn-active-color: #fff; --bs-btn-active-bg: var(--inv-acento-activo);
+  --bs-btn-active-border-color: var(--inv-acento-activo);
+  --bs-btn-disabled-color: #fff; --bs-btn-disabled-bg: var(--inv-acento);
+  --bs-btn-disabled-border-color: var(--inv-acento);
+  --bs-btn-focus-shadow-rgb: 24, 92, 75;
+}
+.inv-app :focus-visible { outline: 3px solid var(--inv-foco); outline-offset: 3px; }

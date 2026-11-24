@@ -1,0 +1,1 @@
+Fallo intencional de ancho en el panel de filtros. Abre index.html a 375 px y sigue la sección 2.8. Inspecciona dimensiones, prueba una hipótesis y guarda la corrección. No uses este archivo como inicio del proyecto.

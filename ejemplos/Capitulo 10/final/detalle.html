@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="es" data-bs-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1">
+  <title>Detalle del producto</title>
+  <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/css/bootstrap.min.css"
+    integrity="sha384-yEPZ7jP9S0QKiUQ0m3jjsO4ProIW7wvR9gXkI7JOGa2XVsw53Yke2bsdkBbjmmiX"
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="app.css">
+</head>
+<body class="inv-app">
+  <a class="visually-hidden-focusable" href="#contenido">Saltar al contenido</a>
+  <nav class="navbar inv-nav navbar-expand-lg bg-body-tertiary border-bottom"
+    aria-label="Principal">
+    <div class="container">
+      <button id="tema" type="button" class="btn btn-outline-secondary btn-sm me-2" aria-pressed="false">Activar modo oscuro</button>
+      <a class="navbar-brand" href="index.html">Inventario</a>
+      <button class="navbar-toggler" type="button"
+        data-bs-toggle="collapse" data-bs-target="#menu-principal"
+        aria-controls="menu-principal" aria-expanded="false"
+        aria-label="Mostrar u ocultar navegación">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div id="menu-principal" class="collapse navbar-collapse">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Productos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="registro.html">Registrar</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <main id="contenido" class="container py-4" tabindex="-1">
+    <h1 class="h2 mb-3 inv-cabecera">Detalle del producto</h1>
+    <nav aria-label="Ruta del producto">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="index.html">Productos</a></li>
+        <li id="ruta-producto" class="breadcrumb-item active" aria-current="page">Detalle</li>
+      </ol>
+    </nav>
+    <p id="no-encontrado" role="status" hidden>
+      Producto no encontrado. Comprueba el código de la dirección o vuelve al listado.
+    </p>
+    <section class="inv-panel" id="ficha-producto" aria-labelledby="nombre-producto" hidden>
+      <h2 id="nombre-producto" class="h4"></h2>
+      <dl class="row">
+        <dt class="col-sm-4">Código</dt><dd id="codigo-producto" class="col-sm-8"></dd>
+        <dt class="col-sm-4">Existencias</dt><dd id="stock-producto" class="col-sm-8"></dd>
+        <dt class="col-sm-4">Precio</dt><dd id="precio-producto" class="col-sm-8"></dd>
+      </dl>
+    </section>
+    <noscript><p>Activa JavaScript para consultar el producto de esta demostración.</p></noscript>
+    <a class="btn btn-outline-secondary" href="index.html">Volver al listado</a>
+  </main>
+  <footer class="container py-4">
+    <p class="small text-body-secondary">Inventario de aprendizaje · Datos de ejemplo</p>
+  </footer>
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-WyOxWvTyr1QaMPfiPJSv76iReVthorl5uWlFtZPyK0IEB0hGzo9y5Bp9mYanr8Bu"
+    crossorigin="anonymous"></script>
+  <script src="detalle.js"></script>
+  <script src="tema.js"></script>
+</body>
+</html>

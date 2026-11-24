@@ -1,0 +1,9 @@
+--- laboratorio/app.css
++++ solucion/app.css
+@@ -85,6 +85,3 @@
+   --bs-btn-focus-shadow-rgb: 24, 92, 75;
+ }
+ .inv-app :focus-visible { outline: 3px solid var(--inv-foco); outline-offset: 3px; }
+-
+-/* Regla de distribución añadida durante una modificación del panel. */
+-.inv-app main { min-width: 62rem; }

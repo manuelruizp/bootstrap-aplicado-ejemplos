@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="es" data-bs-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1">
+  <title>Detalle del producto</title>
+  <link rel="stylesheet" href="css/bootstrap-personalizado.css">
+  <link rel="stylesheet" href="app.css">
+</head>
+<body class="inv-app">
+  <div id="estructura-comun"></div>
+  <noscript><p class="container py-3">Navegación básica sin JavaScript:
+    <a href="index.html">Productos</a> · <a href="registro.html">Registrar</a>.
+    La búsqueda, la validación personalizada, los estados y el tema requieren JavaScript.
+  </p></noscript>
+  <main id="contenido" class="container py-4" tabindex="-1">
+    <h1 class="h2 mb-3 inv-cabecera">Detalle del producto</h1>
+    <nav aria-label="Ruta del producto">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="index.html">Productos</a></li>
+        <li id="ruta-producto" class="breadcrumb-item active" aria-current="page">Detalle</li>
+      </ol>
+    </nav>
+    <p id="no-encontrado" role="status" hidden>
+      Producto no encontrado. Comprueba el código de la dirección o vuelve al listado.
+    </p>
+    <section class="inv-panel" id="ficha-producto" aria-labelledby="nombre-producto" hidden>
+      <h2 id="nombre-producto" class="h4"></h2>
+      <dl class="row">
+        <dt class="col-sm-4">Código</dt><dd id="codigo-producto" class="col-sm-8"></dd>
+        <dt class="col-sm-4">Existencias</dt><dd id="stock-producto" class="col-sm-8"></dd>
+        <dt class="col-sm-4">Precio</dt><dd id="precio-producto" class="col-sm-8"></dd>
+      </dl>
+    </section>
+    <noscript><p>Activa JavaScript para consultar el producto de esta demostración.</p></noscript>
+    <a class="btn btn-outline-secondary" href="index.html">Volver al listado</a>
+  </main>
+  <footer class="container py-4">
+    <p class="small text-body-secondary">Inventario de aprendizaje · Datos de ejemplo</p>
+  </footer>
+  <script src="vendor/bootstrap.bundle.min.js"></script>
+  <script src="layout.js"></script>
+  <script src="detalle.js"></script>
+  <script src="tema.js"></script>
+</body>
+</html>

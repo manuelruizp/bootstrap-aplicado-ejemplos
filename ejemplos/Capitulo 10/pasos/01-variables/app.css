@@ -1,0 +1,45 @@
+/* 1. Decisiones del proyecto y puente a Bootstrap */
+:root, [data-bs-theme="light"] {
+  --inv-acento: #185c4b;
+  --inv-acento-hover: #104638;
+  --inv-acento-activo: #0d3b2f;
+  --inv-enlace: #185c4b;
+  --inv-fondo: #edf3f1;
+  --inv-superficie: #ffffff;
+  --inv-superficie-suave: #f2f7f5;
+  --inv-texto: #20342d;
+  --inv-secundario: #4e6259;
+  --inv-borde: #71867a;
+  --inv-foco: #735300;
+  --inv-radio: .8rem;
+  --inv-espacio: 1rem;
+  --bs-body-font-family: "Segoe UI", system-ui, sans-serif;
+  --bs-body-color: var(--inv-texto);
+  --bs-body-bg: var(--inv-fondo);
+  --bs-secondary-color: var(--inv-secundario);
+  --bs-tertiary-bg: var(--inv-superficie-suave);
+  --bs-border-color: var(--inv-borde);
+  --bs-link-color: var(--inv-enlace);
+  --bs-link-color-rgb: 24, 92, 75;
+  --bs-link-hover-color: #104638;
+  --bs-link-hover-color-rgb: 16, 70, 56;
+}
+[data-bs-theme="dark"] {
+  --inv-enlace: #9ce4c8;
+  --inv-fondo: #14221d;
+  --inv-superficie: #1d3027;
+  --inv-superficie-suave: #243d31;
+  --inv-texto: #ecf5ef;
+  --inv-secundario: #c0d4c7;
+  --inv-borde: #819c8c;
+  --inv-foco: #ffe29a;
+  --bs-body-color: var(--inv-texto);
+  --bs-body-bg: var(--inv-fondo);
+  --bs-secondary-color: var(--inv-secundario);
+  --bs-tertiary-bg: var(--inv-superficie-suave);
+  --bs-border-color: var(--inv-borde);
+  --bs-link-color: var(--inv-enlace);
+  --bs-link-color-rgb: 156, 228, 200;
+  --bs-link-hover-color: #c2f3df;
+  --bs-link-hover-color-rgb: 194, 243, 223;
+}

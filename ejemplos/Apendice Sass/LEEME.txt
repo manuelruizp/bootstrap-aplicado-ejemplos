@@ -1,0 +1,2 @@
+APÉNDICE CÓMO IMPLEMENTAR SASS EN EL PROYECTO
+Parte del panel terminado del capítulo 12. Abre index.html y consulta GUIA.md para preparar trabajo-sass, seguir los pasos, resolver los laboratorios y abordar la práctica independiente.

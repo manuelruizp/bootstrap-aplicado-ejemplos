@@ -1,0 +1,11 @@
+RUTA OPCIONAL SASS
+El CSS y el bundle generados están incluidos: abre index.html sin instalar nada para observar esta referencia.
+Para editar y compilar: instala Node.js LTS compatible (mínimo 20.19); abre una terminal en ESTA carpeta y ejecuta npm ci y npm run build.
+Edita scss/personalizado.scss; no edites css/bootstrap-personalizado.css ni node_modules.
+app.css conserva las reglas y los modos claro/oscuro propios del panel y se carga después del CSS compilado.
+npm run vigilar recompila al guardar; detén la vigilancia con Ctrl+C. npm run produccion comprime el CSS.
+Los cambios de JS o HTML no requieren compilar Sass. El bundle local sigue siendo necesario para modal, menú y toast.
+Las opciones quiet-deps y silence-deprecation=import omiten avisos conocidos de Bootstrap 5.3 y @import; los errores reales siguen deteniendo la compilación.
+La opción --no-error-css evita generar una hoja con el diagnóstico de error. Con las versiones de esta edición, una compilación fallida elimina el CSS de salida. Corrige la fuente y ejecuta npm run css para recuperarlo; comprueba la terminal y el archivo antes de recargar. Una página ya abierta puede mantener temporalmente el aspecto anterior.
+La primera instalación necesita Internet; una referencia con CSS y bundle incluidos puede consultarse sin conexión.
+No copies node_modules al compartir: conserva package.json, package-lock.json, scripts, fuentes, HTML, JS, app.css, css y vendor.

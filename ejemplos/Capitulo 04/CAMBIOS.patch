@@ -1,0 +1,51 @@
+--- inicio/index.html
++++ final/index.html
+@@ -11,7 +11,7 @@
+     crossorigin="anonymous">
+ </head>
+ <body>
+-  <header class="container py-4">
++  <header class="container py-3 py-xl-4">
+     <div class="row g-3 align-items-center">
+       <div class="col-12 col-md">
+         <h1 class="h2 mb-2">Inventario del almacén</h1>
+@@ -24,30 +24,32 @@
+   </header>
+   <main class="container pb-4">
+     <div class="row g-4">
+-        <aside class="col-12 col-lg-4" aria-labelledby="titulo-filtros">
+-          <div class="border rounded-3 p-3 bg-body-tertiary">
++        <aside class="col-12 col-xl-4" aria-labelledby="titulo-filtros">
++          <div class="border rounded-3 p-3 p-md-4 p-xl-3 bg-body-tertiary">
+             <h2 id="titulo-filtros" class="h5 mb-2">Filtros</h2>
+             <p class="small text-body-secondary mb-3">Controles de muestra sin filtrado activo.</p>
+-            <form onsubmit="return false" class="d-flex flex-column gap-3">
+-              <div>
++            <form onsubmit="return false" class="d-flex flex-column flex-md-row flex-xl-column flex-wrap
++              align-items-stretch align-items-md-end align-items-xl-stretch gap-3">
++              <div class="flex-grow-1">
+                 <label for="buscar" class="form-label">Producto</label>
+                 <input id="buscar" type="search" class="form-control"
+                   placeholder="Nombre o código">
+               </div>
+-              <div>
++              <div class="flex-grow-1">
+                 <label for="categoria" class="form-label">Categoría</label>
+                 <select id="categoria" class="form-select">
+                   <option>Todas</option>
+                   <option>Papelería</option>
+                 </select>
+               </div>
+-              <button type="button" class="btn btn-secondary align-self-start" disabled>
++              <button type="button" class="btn btn-secondary align-self-stretch
++                  align-self-md-end align-self-xl-start" disabled>
+                 Aplicar filtros
+               </button>
+             </form>
+           </div>
+         </aside>
+-        <section id="productos" class="col-12 col-lg-8"
++        <section id="productos" class="col-12 col-xl-8"
+           aria-labelledby="titulo-productos">
+           <h2 id="titulo-productos" class="h4 mb-2">
+             Productos disponibles

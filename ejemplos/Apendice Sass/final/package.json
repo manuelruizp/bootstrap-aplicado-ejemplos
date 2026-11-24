@@ -1,0 +1,19 @@
+{
+  "name": "bootstrap-aplicado-sass",
+  "version": "1.0.0",
+  "private": true,
+  "engines": {
+    "node": ">=20.19.0"
+  },
+  "scripts": {
+    "preparar": "node scripts/copiar-bootstrap.cjs",
+    "css": "sass --load-path=node_modules --quiet-deps --silence-deprecation=import --no-source-map --no-error-css scss/personalizado.scss css/bootstrap-personalizado.css",
+    "vigilar": "npm run css -- --watch",
+    "produccion": "npm run css -- --style=compressed",
+    "build": "npm run preparar && npm run css"
+  },
+  "devDependencies": {
+    "bootstrap": "5.3.9",
+    "sass": "1.108.2"
+  }
+}

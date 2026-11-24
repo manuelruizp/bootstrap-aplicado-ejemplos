@@ -1,0 +1,4 @@
+LABORATORIO SASS OPCIONAL
+Trabaja en una copia; conserva el original. Lee el síntoma sin consultar primero la solución.
+Cambiaste el acento en SCSS, pero no aparece al recargar.
+Registra hipótesis, inspección, causa, corrección y regresión. Usa npm ci desde tu copia para los casos de compilación.

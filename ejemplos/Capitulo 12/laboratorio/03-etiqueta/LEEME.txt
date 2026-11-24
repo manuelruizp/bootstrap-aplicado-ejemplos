@@ -1,0 +1,5 @@
+LAB-03 Incidencia obligatoria
+Síntoma: registro.html: al pulsar la etiqueta Nombre no se enfoca el campo.
+Trabaja en una copia de esta carpeta y no abras solucion antes de registrar una hipótesis y una inspección.
+Pregunta inicial: ¿El texto visible está asociado programáticamente al control?
+No modifiques otras incidencias ni el panel base. Documenta los pasos, las condiciones y la evidencia en mi-registro-pruebas.md, la copia que preparaste directamente dentro de Capitulo 12. La referencia corregida está en solucion; explicacion-solucion.md desarrolla la causa.

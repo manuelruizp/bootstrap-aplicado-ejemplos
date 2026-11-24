@@ -1,0 +1,234 @@
+--- inicio/app.js
++++ final/app.js
+@@ -0,0 +1,24 @@
++const consulta = document.querySelector('#buscar');
++const filas = [...document.querySelectorAll('#filas-productos > tr')];
++const conteo = document.querySelector('#conteo');
++const sinCoincidencias = document.querySelector('#sin-coincidencias');
++
++function filtrar() {
++  const termino = consulta.value.trim().toLocaleLowerCase('es');
++  let visibles = 0;
++
++  filas.forEach(fila => {
++    const codigo = fila.dataset.codigo.toLocaleLowerCase('es');
++    const nombre = fila.dataset.nombre.toLocaleLowerCase('es');
++    const coincide = codigo.includes(termino) || nombre.includes(termino);
++    fila.hidden = !coincide;
++    if (coincide) visibles++;
++  });
++
++  conteo.textContent = `Productos visibles: ${visibles} de ${filas.length}.`
++    + (visibles === 0 ? ' Sin coincidencias.' : '');
++  sinCoincidencias.hidden = visibles !== 0;
++}
++
++consulta.addEventListener('input', filtrar);
++filtrar();
+--- inicio/detalle.html
++++ final/detalle.html
+@@ -39,21 +39,21 @@
+     <nav aria-label="Ruta del producto">
+       <ol class="breadcrumb">
+         <li class="breadcrumb-item"><a href="index.html">Productos</a></li>
+-        <li class="breadcrumb-item active" aria-current="page">Detalle de P001</li>
++        <li id="ruta-producto" class="breadcrumb-item active" aria-current="page">Detalle</li>
+       </ol>
+     </nav>
+-    <section aria-labelledby="nombre-producto">
+-      <h2 id="nombre-producto" class="h4">Cuaderno universitario</h2>
++    <p id="no-encontrado" role="status" hidden>
++      Producto no encontrado. Comprueba el código de la dirección o vuelve al listado.
++    </p>
++    <section id="ficha-producto" aria-labelledby="nombre-producto" hidden>
++      <h2 id="nombre-producto" class="h4"></h2>
+       <dl class="row">
+-        <dt class="col-sm-4">Código</dt>
+-        <dd class="col-sm-8">P001</dd>
+-        <dt class="col-sm-4">Existencias</dt>
+-        <dd class="col-sm-8">25 unidades</dd>
+-        <dt class="col-sm-4">Precio</dt>
+-        <dd class="col-sm-8">$ 150.00</dd>
++        <dt class="col-sm-4">Código</dt><dd id="codigo-producto" class="col-sm-8"></dd>
++        <dt class="col-sm-4">Existencias</dt><dd id="stock-producto" class="col-sm-8"></dd>
++        <dt class="col-sm-4">Precio</dt><dd id="precio-producto" class="col-sm-8"></dd>
+       </dl>
+-      <p class="small text-body-secondary">Datos estáticos de P001 para practicar la navegación.</p>
+     </section>
++    <noscript><p>Activa JavaScript para consultar el producto de esta demostración.</p></noscript>
+     <a class="btn btn-outline-secondary" href="index.html">Volver al listado</a>
+   </main>
+   <footer class="container py-4">
+@@ -63,5 +63,6 @@
+     src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/js/bootstrap.bundle.min.js"
+     integrity="sha384-WyOxWvTyr1QaMPfiPJSv76iReVthorl5uWlFtZPyK0IEB0hGzo9y5Bp9mYanr8Bu"
+     crossorigin="anonymous"></script>
++  <script src="detalle.js"></script>
+ </body>
+ </html>
+--- inicio/detalle.js
++++ final/detalle.js
+@@ -0,0 +1,35 @@
++const productos = [
++  {
++    "codigo": "P001",
++    "nombre": "Cuaderno universitario",
++    "precio": 150,
++    "unidades": 25
++  },
++  {
++    "codigo": "P002",
++    "nombre": "Bolígrafo azul",
++    "precio": 25,
++    "unidades": 80
++  },
++  {
++    "codigo": "P003",
++    "nombre": "Carpeta tamaño carta",
++    "precio": 45,
++    "unidades": 12
++  }
++];
++
++const codigo = new URLSearchParams(location.search).get('codigo') || '';
++const producto = productos.find(item => item.codigo === codigo);
++
++if (producto) {
++  document.querySelector('#nombre-producto').textContent = producto.nombre;
++  document.querySelector('#codigo-producto').textContent = producto.codigo;
++  document.querySelector('#stock-producto').textContent = producto.unidades + ' unidades';
++  document.querySelector('#precio-producto').textContent = '$ ' + producto.precio.toFixed(2);
++  document.querySelector('#ruta-producto').textContent = 'Detalle de ' + producto.codigo;
++  document.querySelector('#ficha-producto').hidden = false;
++  document.title = producto.nombre + ' | Detalle del producto';
++} else {
++  document.querySelector('#no-encontrado').hidden = false;
++}
+--- inicio/index.html
++++ final/index.html
+@@ -51,11 +51,11 @@
+         <aside class="col-12 col-xl-4" aria-labelledby="titulo-filtros">
+           <div class="border rounded-3 p-3 p-md-4 p-xl-3 bg-body-tertiary">
+             <h2 id="titulo-filtros" class="h5 mb-2">Filtros</h2>
+-            <p class="small text-body-secondary mb-3">Controles de muestra sin filtrado activo.</p>
+-            <form onsubmit="return false" class="d-flex flex-column flex-md-row flex-xl-column flex-wrap
++            <p class="small text-body-secondary mb-3">La búsqueda se aplica al escribir. Categoría y Aplicar filtros siguen como muestra.</p>
++            <div id="herramientas" class="d-flex flex-column flex-md-row flex-xl-column flex-wrap
+               align-items-stretch align-items-md-end align-items-xl-stretch gap-3">
+               <div class="flex-grow-1">
+-                <label for="buscar" class="form-label">Producto</label>
++                <label for="buscar" class="form-label">Buscar por nombre o código</label>
+                 <input id="buscar" type="search" class="form-control"
+                   placeholder="Nombre o código">
+               </div>
+@@ -70,7 +70,7 @@
+                   align-self-md-end align-self-xl-start" disabled>
+                 Aplicar filtros
+               </button>
+-            </form>
++            </div>
+           </div>
+         </aside>
+         <section id="productos" class="col-12 col-xl-8"
+@@ -78,35 +78,77 @@
+           <h2 id="titulo-productos" class="h4 mb-2">
+             Productos disponibles
+           </h2>
+-          <p>Tres artículos de papelería para consultar.</p>
++          <p>Resumen del inventario completo; la búsqueda solo cambia las filas visibles.</p>
+           <div class="row g-3 mb-3" aria-label="Resumen del inventario">
+             <div class="col-6">
+               <div class="border rounded p-3">
+-                <p class="h4 mb-1">3</p>
++                <p id="resumen-productos" class="h4 mb-1">3</p>
+                 <p class="mb-0">Productos</p>
+               </div>
+             </div>
+             <div class="col-6">
+               <div class="border rounded p-3">
+-                <p class="h4 mb-1">117</p>
++                <p id="resumen-unidades" class="h4 mb-1">117</p>
+                 <p class="mb-0">Unidades</p>
+               </div>
+             </div>
+           </div>
+-          <ul class="list-group">
+-            <li class="list-group-item py-2">
+-              <strong><a href="detalle.html">Cuaderno universitario</a></strong>
+-              <p class="small text-body-secondary mb-0">Código: P001. Existencias: 25 unidades.</p>
+-            </li>
+-            <li class="list-group-item py-2">
+-              <strong>Bolígrafo azul</strong>
+-              <p class="small text-body-secondary mb-0">Código: P002. Existencias: 80 unidades.</p>
+-            </li>
+-            <li class="list-group-item py-2">
+-              <strong>Carpeta tamaño carta</strong>
+-              <p class="small text-body-secondary mb-0">Código: P003. Existencias: 12 unidades.</p>
+-            </li>
+-          </ul>
++          <p id="ayuda-tabla" class="small text-body-secondary">
++            En pantallas pequeñas, desplaza la tabla horizontalmente para consultar todas las columnas.
++          </p>
++          <p id="conteo" role="status" aria-live="polite"></p>
++          <p id="sin-coincidencias" hidden>Cambia o borra la búsqueda para volver a ver productos.</p>
++          <div id="tabla-desplazable" class="table-responsive" tabindex="0"
++            role="region" aria-labelledby="titulo-productos" aria-describedby="ayuda-tabla">
++            <table class="table table-striped table-hover align-middle">
++              <caption>Inventario de ejemplo. Precios en dólares estadounidenses ($).</caption>
++              <thead>
++                <tr>
++                  <th scope="col">Código</th>
++                  <th scope="col">Producto</th>
++                  <th scope="col" class="text-end text-nowrap">Precio $</th>
++                  <th scope="col" class="text-end text-nowrap">Unidades</th>
++                  <th scope="col">Estado</th>
++                  <th scope="col">Acciones</th>
++                </tr>
++              </thead>
++              <tbody id="filas-productos">
++                <tr data-codigo="P001" data-nombre="Cuaderno universitario">
++                  <th scope="row">P001</th>
++                  <td>Cuaderno universitario</td>
++                  <td class="text-end text-nowrap">150.00</td>
++                  <td class="text-end">25</td>
++                  <td>Disponible</td>
++                  <td><a class="btn btn-sm btn-outline-primary position-relative text-nowrap"
++                      href="detalle.html?codigo=P001">
++                      Ver <span class="visually-hidden">Cuaderno universitario</span>
++                    </a></td>
++                </tr>
++                <tr data-codigo="P002" data-nombre="Bolígrafo azul">
++                  <th scope="row">P002</th>
++                  <td>Bolígrafo azul</td>
++                  <td class="text-end text-nowrap">25.00</td>
++                  <td class="text-end">80</td>
++                  <td>Disponible</td>
++                  <td><a class="btn btn-sm btn-outline-primary position-relative text-nowrap"
++                      href="detalle.html?codigo=P002">
++                      Ver <span class="visually-hidden">Bolígrafo azul</span>
++                    </a></td>
++                </tr>
++                <tr data-codigo="P003" data-nombre="Carpeta tamaño carta">
++                  <th scope="row">P003</th>
++                  <td>Carpeta tamaño carta</td>
++                  <td class="text-end text-nowrap">45.00</td>
++                  <td class="text-end">12</td>
++                  <td><span class="badge text-bg-warning">Existencias bajas</span></td>
++                  <td><a class="btn btn-sm btn-outline-primary position-relative text-nowrap"
++                      href="detalle.html?codigo=P003">
++                      Ver <span class="visually-hidden">Carpeta tamaño carta</span>
++                    </a></td>
++                </tr>
++              </tbody>
++            </table>
++          </div>
+         </section>
+     </div>
+   </main>
+@@ -117,5 +159,6 @@
+     src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/js/bootstrap.bundle.min.js"
+     integrity="sha384-WyOxWvTyr1QaMPfiPJSv76iReVthorl5uWlFtZPyK0IEB0hGzo9y5Bp9mYanr8Bu"
+     crossorigin="anonymous"></script>
++  <script src="app.js"></script>
+ </body>
+ </html>

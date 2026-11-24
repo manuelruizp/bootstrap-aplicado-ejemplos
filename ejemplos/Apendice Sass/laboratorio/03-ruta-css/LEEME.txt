@@ -1,0 +1,4 @@
+LABORATORIO SASS OPCIONAL
+Trabaja en una copia; conserva el original. Lee el síntoma sin consultar primero la solución.
+El listado pierde estilos de Bootstrap aunque app.css sigue cargando.
+Registra hipótesis, inspección, causa, corrección y regresión. Usa npm ci desde tu copia para los casos de compilación.

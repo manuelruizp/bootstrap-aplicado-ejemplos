@@ -1,0 +1,31 @@
+Bootstrap aplicado
+Diseña, personaliza y mejora la interfaz de tu aplicación web
+
+PROCEDENCIA DE LOS MATERIALES
+Estos archivos forman parte del repositorio de ejemplos de Bootstrap aplicado.
+Dirección del repositorio: la página de GitHub desde la que descargaste este paquete.
+Versión de este paquete: 0.1.0 (revisión editorial). Consulta VERSION en la raíz.
+
+OBTENER UNA COPIA
+Descarga una copia completa del repositorio desde GitHub y descomprímela; también puedes clonarlo si utilizas Git. No es necesario instalar Git para seguir el libro. Conserva los nombres y la estructura de carpetas. La dirección del repositorio permitirá obtener los archivos; las rutas del texto indican dónde trabajar dentro de esa copia.
+
+INTERPRETAR LAS RUTAS
+Las rutas ejemplos/Capitulo NN/ parten de la raíz del repositorio descargado o clonado. Por ejemplo: ejemplos/Capitulo 01/inicio/index.html.
+Si ya estás dentro de ejemplos, abre index.html para recorrer el catálogo local. Desde allí puedes acceder a cada capítulo.
+Los enlaces abreviados de una guía, como inicio/index.html o final/index.html, parten de la carpeta del capítulo correspondiente.
+Si GitHub muestra archivos HTML como código, abre su copia local en el navegador. Un repositorio público no implica que exista un sitio publicado con GitHub Pages.
+
+SEGUIR EL LIBRO
+Cada capítulo tiene inicio y final. El inicio del capítulo siguiente coincide con el final del anterior. Copia inicio como trabajo antes de editar. pasos, practica y laboratorio se utilizan cuando el capítulo los indique. Las soluciones de prácticas no reemplazan final.
+CAMBIOS.patch muestra diferencias y no requiere usar Git para leerlo.
+En el capítulo 12, inicio y final coinciden: las incidencias intencionales están en laboratorios separados y el historial es un reto independiente.
+
+EJECUCIÓN Y VERSIONES
+Abre los HTML locales directamente o utiliza tu servidor de desarrollo habitual. Los ejemplos cargan Bootstrap por CDN y necesitan conexión, salvo que prepares la alternativa local del capítulo 1. No hay backend ni persistencia de productos o tema.
+Para reproducir este paquete, utiliza la etiqueta v0.1.0 cuando esté publicada. La edición definitiva del libro indicará la etiqueta que le corresponde; las versiones posteriores podrían cambiar los archivos.
+
+ESTRUCTURA DE REFERENCIA
+Las carpetas Capitulo NN, inicio, final, pasos y practica organizan los materiales del repositorio. Dentro de la copia trabajo, el recorrido principal mantiene las páginas HTML y los recursos propios al mismo nivel. El capítulo 1 comienza solo con index.html; en el 5 se añaden registro.html y detalle.html, y los scripts y app.css se crean cuando el texto los introduce. vendor se utiliza únicamente si preparas Bootstrap local. La alternativa con paginas, css, js e img es opcional para tu aplicación. Si reorganizas archivos, revisa enlaces y referencias de CSS, JavaScript e imágenes, y comprueba las cargas tras recargar.
+
+APÉNDICE SASS
+Después del capítulo 12, abre Apendice Sass/index.html. El apéndice parte del panel terminado y reúne sus propias carpetas inicio, pasos, final, practica y laboratorio. Incluye CSS y bundle locales; para editar y recompilar necesitas Node.js y npm. La primera instalación de dependencias requiere conexión. Las prácticas permanecen independientes.

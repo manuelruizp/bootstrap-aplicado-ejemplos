@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1">
+  <title>Productos</title>
+  <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/css/bootstrap.min.css"
+    integrity="sha384-yEPZ7jP9S0QKiUQ0m3jjsO4ProIW7wvR9gXkI7JOGa2XVsw53Yke2bsdkBbjmmiX"
+    crossorigin="anonymous">
+</head>
+<body>
+  <a class="visually-hidden-focusable" href="#contenido">Saltar al contenido</a>
+  <nav class="navbar navbar-expand-lg bg-body-tertiary border-bottom"
+    aria-label="Principal">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">Inventario</a>
+      <button class="navbar-toggler" type="button"
+        data-bs-toggle="collapse" data-bs-target="#menu-principal"
+        aria-controls="menu-principal" aria-expanded="false"
+        aria-label="Mostrar u ocultar navegación">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div id="menu-principal" class="collapse navbar-collapse">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="index.html">Productos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="registro.html">Registrar</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <main id="contenido" class="container py-4" tabindex="-1">
+  <header class="mb-4">
+    <div class="row g-3 align-items-center">
+      <div class="col-12 col-md">
+        <h1 class="h2 mb-2">Productos</h1>
+        <p class="lead mb-0">Consulta los productos y sus existencias.</p>
+      </div>
+      <div class="col-12 col-md-auto">
+        <a class="btn btn-primary" href="#productos">Ver productos</a>
+      </div>
+    </div>
+  </header>
+
+    <div class="row g-4">
+        <aside class="col-12 col-xl-4" aria-labelledby="titulo-filtros">
+          <div class="border rounded-3 p-3 p-md-4 p-xl-3 bg-body-tertiary">
+            <h2 id="titulo-filtros" class="h5 mb-2">Filtros</h2>
+            <p class="small text-body-secondary mb-3">La búsqueda se aplica al escribir. Categoría y Aplicar filtros siguen como muestra.</p>
+            <div id="herramientas" class="d-flex flex-column flex-md-row flex-xl-column flex-wrap
+              align-items-stretch align-items-md-end align-items-xl-stretch gap-3">
+              <div class="flex-grow-1">
+                <label for="buscar" class="form-label">Buscar por nombre o código</label>
+                <input id="buscar" type="search" class="form-control"
+                  placeholder="Nombre o código">
+              </div>
+              <div class="flex-grow-1">
+                <label for="categoria" class="form-label">Categoría</label>
+                <select id="categoria" class="form-select">
+                  <option>Todas</option>
+                  <option>Papelería</option>
+                </select>
+              </div>
+              <button type="button" class="btn btn-secondary align-self-stretch
+                  align-self-md-end align-self-xl-start" disabled>
+                Aplicar filtros
+              </button>
+            </div>
+          </div>
+        </aside>
+        <section id="productos" class="col-12 col-xl-8"
+          aria-labelledby="titulo-productos">
+          <h2 id="titulo-productos" class="h4 mb-2">
+            Productos disponibles
+          </h2>
+          <p>Resumen del inventario completo; la búsqueda solo cambia las filas visibles.</p>
+          <div class="row g-3 mb-3" aria-label="Resumen del inventario">
+            <div class="col-6">
+              <div class="border rounded p-3">
+                <p id="resumen-productos" class="h4 mb-1">3</p>
+                <p class="mb-0">Productos</p>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="border rounded p-3">
+                <p id="resumen-unidades" class="h4 mb-1">117</p>
+                <p class="mb-0">Unidades</p>
+              </div>
+            </div>
+          </div>
+          <p id="ayuda-tabla" class="small text-body-secondary">
+            En pantallas pequeñas, desplaza la tabla horizontalmente para consultar todas las columnas.
+          </p>
+          <p id="conteo" role="status" aria-live="polite"></p>
+          <p id="sin-coincidencias" hidden>Cambia o borra la búsqueda para volver a ver productos.</p>
+          <div id="tabla-desplazable" class="table-responsive" tabindex="0"
+            role="region" aria-labelledby="titulo-productos" aria-describedby="ayuda-tabla">
+            <table class="table table-striped table-hover align-middle">
+              <caption>Inventario de ejemplo. Precios en dólares estadounidenses ($).</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Código</th>
+                  <th scope="col">Producto</th>
+                  <th scope="col" class="text-end text-nowrap">Precio $</th>
+                  <th scope="col" class="text-end text-nowrap">Unidades</th>
+                  <th scope="col">Estado</th>
+                  <th scope="col">Acciones</th>
+                </tr>
+              </thead>
+              <tbody id="filas-productos">
+                <tr data-codigo="P001" data-nombre="Cuaderno universitario">
+                  <th scope="row">P001</th>
+                  <td>Cuaderno universitario</td>
+                  <td class="text-end text-nowrap">150.00</td>
+                  <td class="text-end">25</td>
+                  <td>Disponible</td>
+                  <td><a href="detalle.html">Ver P001</a></td>
+                </tr>
+                <tr data-codigo="P002" data-nombre="Bolígrafo azul">
+                  <th scope="row">P002</th>
+                  <td>Bolígrafo azul</td>
+                  <td class="text-end text-nowrap">25.00</td>
+                  <td class="text-end">80</td>
+                  <td>Disponible</td>
+                  <td>Sin enlace aún</td>
+                </tr>
+                <tr data-codigo="P003" data-nombre="Carpeta tamaño carta">
+                  <th scope="row">P003</th>
+                  <td>Carpeta tamaño carta</td>
+                  <td class="text-end text-nowrap">45.00</td>
+                  <td class="text-end">12</td>
+                  <td><span class="badge text-bg-warning">Existencias bajas</span></td>
+                  <td>Sin enlace aún</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+    </div>
+  </main>
+  <footer class="container py-4">
+    <p class="small text-body-secondary">Inventario de aprendizaje · Datos de ejemplo</p>
+  </footer>
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-WyOxWvTyr1QaMPfiPJSv76iReVthorl5uWlFtZPyK0IEB0hGzo9y5Bp9mYanr8Bu"
+    crossorigin="anonymous"></script>
+  <script src="app.js"></script>
+</body>
+</html>

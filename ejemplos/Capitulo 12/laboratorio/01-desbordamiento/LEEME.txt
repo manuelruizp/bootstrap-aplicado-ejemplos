@@ -1,0 +1,5 @@
+LAB-01 Incidencia obligatoria
+Síntoma: index.html a 375 px: toda la página se desplaza horizontalmente.
+Trabaja en una copia de esta carpeta y no abras solucion antes de registrar una hipótesis y una inspección.
+Pregunta inicial: ¿Qué región obliga al documento a ser más ancho que la ventana?
+No modifiques otras incidencias ni el panel base. Documenta los pasos, las condiciones y la evidencia en mi-registro-pruebas.md, la copia que preparaste directamente dentro de Capitulo 12. La referencia corregida está en solucion; explicacion-solucion.md desarrolla la causa.
